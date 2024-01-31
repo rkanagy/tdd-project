@@ -26,11 +26,3 @@ class Portfolio:
 
         failure_message = ",".join(f.args[0] for f in failures)
         raise Exception("Missing exchange rate(s):[" + failure_message + "]")
-
-    def __convert(self, money, currency):
-        exchange_rates = {"EUR->USD": 1.2, "USD->KRW": 1100}
-        if money.currency == currency:
-            return money.amount
-        else:
-            key = money.currency + "->" + currency
-            return money.amount * exchange_rates[key]
